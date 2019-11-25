@@ -22,3 +22,35 @@ Student::Student(int id, string name, string grade, string major, double gpa, in
     studentGPA = gpa;
     advisorID = advisor;
 }
+
+bool Student::operator=(Student stu)
+{
+    if(stu.studentID == this -> studentID)
+        return true;
+    else
+        return false;
+}
+
+bool Student::operator<(Student stu)
+{
+    if(stu.studentID > this -> studentID)
+        return true;
+    else
+        return false;
+}
+
+bool Student::operator>(Student stu)
+{
+    if(stu.studentID < this -> studentID)
+        return true;
+    else
+        return false;
+}
+
+bool Student::operator!=(Student stu)
+{
+    if(stu.studentID!= this -> studentID)
+        return true;
+    else
+        return false;
+}

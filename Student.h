@@ -19,6 +19,9 @@ public:
     Student();
     Student(int id, string name, string grade, string major, double gpa, int advisor);
 
-
+    bool operator=(Student stu);
+    bool operator>(Student stu);
+    bool operator<(Student stu);
+    bool operator!=(Student stu);
 
 };
