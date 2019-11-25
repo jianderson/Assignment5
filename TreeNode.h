@@ -1,4 +1,5 @@
 #include<iostream>
+#include "GenQueue.h"
 using namespace std;
 template <class T>
 class TreeNode

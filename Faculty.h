@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Student.h"
+// #include "DoublyLinkedList.h"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ private:
     string facultyName;
     string facultyStatus;
     string facultyDepartment;
-    //int[] *facultyAdvisees;
+    DoublyLinkedList<int> *facultyAdvisees = new DoublyLinkedList<int>();
     //THIS NEEDS TO BE A LIST WE MIGHT HAVE TO USE OUR LINKED LIST CLASSES
 public:
     Faculty();
