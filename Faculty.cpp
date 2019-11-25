@@ -12,8 +12,3 @@ Faculty::Faculty(int id, string name, string status, string department)
 {
 
 }
-
-void PrintAllFaculty()
-{
-    masterFaculty->printTree();
-}

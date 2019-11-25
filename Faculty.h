@@ -16,7 +16,5 @@ private:
 public:
     Faculty();
     Faculty(int id, string name, string status, string department);
-    BST<Faculty> *masterFaculty = new BST<Faculty>();
-    void PrintAllFaculty();
 
 };

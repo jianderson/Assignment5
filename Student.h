@@ -18,9 +18,7 @@ public:
     int studentID;
     Student();
     Student(int id, string name, string grade, string major, double gpa, int advisor);
-    BST<Student> *masterStudent = new BST<Student>();
-    void PrintAllStudents();
-    void AddNewStudent(Student s);
-    Student GetStudentInfo();
+
+
 
 };
