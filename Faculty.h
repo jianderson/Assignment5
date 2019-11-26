@@ -6,15 +6,18 @@ using namespace std;
 
 class Faculty
 {
-private:
-    int facultyID;
+public:
+
     string facultyName;
     string facultyStatus;
     string facultyDepartment;
-    DoublyLinkedList<int> *facultyAdvisees = new DoublyLinkedList<int>();
+
+    int facultyID;
+    DoublyLinkedList<int> *facultyAdvisees;
     //THIS NEEDS TO BE A LIST WE MIGHT HAVE TO USE OUR LINKED LIST CLASSES
-public:
+
     Faculty();
     Faculty(int id, string name, string status, string department);
 
+    void DisplayFaculty(Faculty* f);
 };

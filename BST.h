@@ -20,7 +20,7 @@ class BST
 
         }
 
-        bool search(T value)
+        bool search(int value)
         {
 
             if(root == NULL)
@@ -292,6 +292,31 @@ cout << "this2" << endl;
             recPrint(node->left);
             cout << node->key << endl;
             recPrint(node->right);
+        }
+
+        T printNode(int k)
+        {
+            if(root == NULL)
+                return NULL;
+            else
+            {
+                TreeNode<T> *current = root;
+
+                while(current->key != k)
+                {
+                    if(k < current->key)
+                        current = current->left;
+                    else
+                        current = current->right;
+
+                    if(current == NULL)
+                        return NULL;
+                }
+
+                //if we reach this point current = the key you want
+
+                return current-> value;
+            }
         }
 
 };

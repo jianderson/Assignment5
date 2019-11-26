@@ -54,3 +54,16 @@ bool Student::operator!=(Student stu)
     else
         return false;
 }
+
+void Student::DisplayStudent(Student* s)
+{
+
+    cout << "Student ID: " << s->studentID << endl;
+    cout << "Student Name: " << s->studentName << endl;
+    cout << "Student Grade Level: " << s->gradeLevel << endl;
+    cout << "Student Major: " << s->studentMajor << endl;
+    cout << "Student GPA: " << s->studentGPA << endl;
+    cout << "Student Advisor ID Number: " << s->advisorID << endl;
+
+
+}
