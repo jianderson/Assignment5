@@ -24,4 +24,8 @@ public:
     bool operator<(Student stu);
     bool operator!=(Student stu);
 
+    friend ostream& operator<<(ostream& fileStreamer, Student& stu);
+
+    void toString();
+
 };

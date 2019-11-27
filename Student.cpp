@@ -55,6 +55,8 @@ bool Student::operator!=(Student stu)
         return false;
 }
 
+
+
 void Student::DisplayStudent(Student* s)
 {
 
@@ -66,4 +68,29 @@ void Student::DisplayStudent(Student* s)
     cout << "Student Advisor ID Number: " << s->advisorID << endl;
 
 
+}
+
+
+
+ostream& operator<<(ostream& fileStreamer, Student& stu)
+{
+    fileStreamer << stu.studentID << endl;
+    fileStreamer << stu.studentName << endl;
+    fileStreamer << stu.gradeLevel << endl;
+    fileStreamer << stu.studentMajor << endl;
+    fileStreamer << stu.studentGPA << endl;
+    fileStreamer << stu.advisorID << endl;
+
+
+
+}
+
+void Student::toString()
+{
+    cout << "Student ID: " << studentID << endl;
+    cout << "Student Name: " << studentName << endl;
+    cout << "Student Grade Level: " << gradeLevel << endl;
+    cout << "Student Major: " << studentMajor << endl;
+    cout << "Student GPA: " << studentGPA << endl;
+    cout << "Student Advisor ID Number: " << advisorID << endl;
 }

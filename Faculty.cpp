@@ -30,12 +30,78 @@ void Faculty::DisplayFaculty(Faculty* f)
     cout << "Faculty Status: " << f->facultyStatus << endl;
     cout << "Faculty Department: " << f->facultyDepartment << endl;
     cout << "Advisees: ";
+    DoublyListNode<int> *curr = facultyAdvisees->front;
     for(int i = 0; i < facultyAdvisees->getSize(); ++i)
     {
-        DoublyListNode<int> *curr = facultyAdvisees->front;
+
         cout << curr->data << endl;
         curr = curr->next;
     }
+
+
+}
+
+
+
+bool Faculty::operator=(Faculty fac)
+{
+    if(fac.facultyID == this -> facultyID)
+        return true;
+    else
+        return false;
+}
+
+bool Faculty::operator<(Faculty fac)
+{
+    if(fac.facultyID > this -> facultyID)
+        return true;
+    else
+        return false;
+}
+
+bool Faculty::operator>(Faculty fac)
+{
+    if(fac.facultyID < this -> facultyID)
+        return true;
+    else
+        return false;
+}
+
+bool Faculty::operator!=(Faculty fac)
+{
+    if(fac.facultyID!= this -> facultyID)
+        return true;
+    else
+        return false;
+}
+
+ostream& operator<<(ostream& fileStreamer, Faculty& fac)
+{
+    fileStreamer << fac.facultyID << endl;
+    fileStreamer << fac.facultyName << endl;
+    fileStreamer << fac.facultyStatus << endl;
+    fileStreamer << fac.facultyDepartment << endl;
+    fileStreamer << *(fac.facultyAdvisees) << endl;
+
+
+}
+
+
+void Faculty::toString()
+{
+    cout << "Faculty ID: " << facultyID << endl;
+    cout << "Faculty Name: " << facultyName << endl;
+    cout << "Faculty Status: " << facultyStatus << endl;
+    cout << "Faculty Department: " << facultyDepartment << endl;
+    cout << "Advisees: ";
+    DoublyListNode<int> *curr = facultyAdvisees->front;
+    for(int i = 0; i < facultyAdvisees->getSize(); ++i)
+    {
+
+        cout << curr->data << " ";
+        curr = curr->next;
+    }
+    cout << endl;
 
 
 }

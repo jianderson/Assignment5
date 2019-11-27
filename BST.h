@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "TreeNode.h"
 
 using namespace std;
@@ -6,10 +7,12 @@ using namespace std;
 template <class T>
 class BST
 {
-    private:
+    public:
         TreeNode<T> *root;
 
-    public:
+        const string endNode = "||";
+
+
         BST()
         {
             root = NULL;
@@ -290,7 +293,8 @@ cout << "this2" << endl;
             if(node == NULL)
                 return;
             recPrint(node->left);
-            cout << node->key << endl;
+            node->value->toString();
+            cout << endl;
             recPrint(node->right);
         }
 
@@ -318,5 +322,35 @@ cout << "this2" << endl;
                 return current-> value;
             }
         }
+
+        void ToFile(string fileName)
+        {
+            ofstream fileStreamer;
+
+            fileStreamer.open(fileName, ios::out);
+
+            if(!fileStreamer)
+                throw runtime_error ("File could not be opened.");
+
+            NodeToFile(root, fileStreamer);
+            fileStreamer.close();
+        }
+
+        void NodeToFile(TreeNode<T> *node, ofstream& fileStreamer)
+        {
+            if(node == NULL)
+            {
+                fileStreamer << endNode << endl;
+                return;
+            }
+
+            NodeToFile(node->left, fileStreamer);
+            fileStreamer<< node->key << endl;
+            fileStreamer << *(node->value) << endl;
+            NodeToFile(node->right, fileStreamer);
+
+        }
+
+
 
 };

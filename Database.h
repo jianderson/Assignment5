@@ -10,6 +10,7 @@ public:
     BST<Faculty*> *masterFaculty;
 
     Database();
+    ~Database();
 
     void PrintAllStudents();
     void AddNewStudent(Student* s);

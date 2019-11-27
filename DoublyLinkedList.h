@@ -9,6 +9,18 @@ public:
     DoublyListNode<T> *back;
     unsigned int size;
 
+    friend ostream& operator <<(ostream& fileStreamer, DoublyLinkedList<T>& lList)
+    {
+        DoublyListNode<T>* curr = lList.front;
+
+        while(curr != NULL)
+        {
+            fileStreamer << curr->data << endl;
+            curr = curr->next;
+        }
+        return fileStreamer;
+    }
+
 //methods
 //constructor
     DoublyLinkedList()
@@ -174,5 +186,7 @@ public:
 
         return curr->data;
     }
+
+
 
 };

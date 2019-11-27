@@ -20,4 +20,12 @@ public:
     Faculty(int id, string name, string status, string department);
 
     void DisplayFaculty(Faculty* f);
+
+    bool operator=(Faculty fac);
+    bool operator>(Faculty fac);
+    bool operator<(Faculty fac);
+    bool operator!=(Faculty fac);
+    friend ostream& operator<<(ostream& fileStreamer, Faculty& fac);
+
+    void toString();
 };

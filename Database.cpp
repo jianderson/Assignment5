@@ -1,12 +1,19 @@
 #include <iostream>
-#include "Database.h"
+#include "FileIO.h"
+
 
 using namespace std;
 
 Database::Database()
 {
-masterStudent = new BST<Student*>();
-masterFaculty = new BST<Faculty*>();
+masterStudent = FileIO::ReadStudentTree();
+masterFaculty = FileIO::ReadFacultyTree();
+}
+
+Database::~Database()
+{
+FileIO::WriteStudentTree(masterStudent);
+FileIO::WriteFacultyTree(masterFaculty);
 }
 
 void Database::PrintAllStudents()
@@ -19,6 +26,8 @@ void Database::AddNewStudent(Student* s)
 
     masterStudent->insert(s->studentID, s);
     int idAdvisor = s->advisorID;
+    Faculty* advisor = masterFaculty->printNode(idAdvisor);
+    advisor->facultyAdvisees->insertBack(s->studentID);
 
 }
 
@@ -129,9 +138,22 @@ Faculty* Database::DeleteFaculty(int facultyID)
 
 void Database::ChangeStudentFacultyID(int stuID, int facID)
 {
-    Student* oldStudent = DeleteStudent(stuID);
+    Student* oldStudent = masterStudent->printNode(stuID);
+    int oldAdvisor = oldStudent -> advisorID;
+    Faculty* oldf = masterFaculty->printNode(oldAdvisor);
+
+    int position = oldf->facultyAdvisees->find(stuID);
+    cout << position << " is the posision" << endl;
+    oldf->facultyAdvisees->deletePos(position);
+
+
+
     oldStudent -> advisorID = facID;
-    AddNewStudent(oldStudent);
+
+    Faculty* newFaculty = masterFaculty->printNode(facID);
+    newFaculty->facultyAdvisees->insertBack(stuID);
+
+
 }
 
 Faculty* Database::GetFacultyInfo()

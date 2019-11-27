@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Database.h"
+#include "FileIO.h"
 
 using namespace std;
 
@@ -37,12 +37,12 @@ while(keepRunning)
 
     if(userChoice == 1)
     {
-
+        db.masterStudent->printTree();
     }
 
     else if(userChoice == 2)
     {
-
+        db.masterFaculty->printTree();
     }
 
     else if(userChoice == 3)
@@ -77,6 +77,27 @@ while(keepRunning)
 
     else if(userChoice == 6)
     {
+        cout << "What is the Faculty ID: " << endl;
+        int facID;
+        cin >> facID;
+
+        while(!db.masterFaculty -> search(facID))
+        {
+            cout << "This is an invalid Advisor ID Number. " << endl;
+            cout << "Enter a valid Advisor ID Number: " << endl;
+            cin >> facID;
+        }
+
+        Faculty* outF = db.masterFaculty->printNode(facID);
+        DoublyListNode<int>* curr = outF->facultyAdvisees->front;
+        for(int i = 0; i < outF->facultyAdvisees->getSize(); ++i)
+        {
+            int stuId = curr->data;
+            Student* outS = db.masterStudent->printNode(stuId);
+            outS->DisplayStudent(outS);
+            curr = curr->next;
+
+        }
 
     }
 
@@ -84,7 +105,10 @@ while(keepRunning)
     {
 
         Student* myStu = db.GetStudentInfo();
+        //myStu->advisorID = db.masterFaculty->root->value->facultyID;
         db.AddNewStudent(myStu);
+
+
 
     }
 
@@ -125,6 +149,12 @@ while(keepRunning)
         cin >> stuID;
         cout << "Enter the new Advisor ID: " << endl;
         cin >> facID;
+        while(!db.masterStudent -> search(stuID))
+        {
+            cout << "This is an invalid Student ID Number. " << endl;
+            cout << "Enter a valid Student ID Number: " << endl;
+            cin >> stuID;
+        }
         while(!db.masterFaculty -> search(facID))
         {
             cout << "This is an invalid Advisor ID Number. " << endl;
@@ -137,6 +167,37 @@ while(keepRunning)
 
     else if(userChoice == 12)
     {
+        //Remove an advisee from a faculty member given the ids
+
+        int stuID;
+        int facID;
+        cout << "Enter the Student ID: " << endl;
+        cin >> stuID;
+        cout << "Enter the new Advisor ID: " << endl;
+        cin >> facID;
+        while(!db.masterStudent -> search(stuID))
+        {
+            cout << "This is an invalid Student ID Number. " << endl;
+            cout << "Enter a valid Student ID Number: " << endl;
+            cin >> stuID;
+        }
+        while(!db.masterFaculty -> search(facID))
+        {
+            cout << "This is an invalid Advisor ID Number. " << endl;
+            cout << "Enter a valid Advisor ID Number: " << endl;
+            cin >> facID;
+        }
+
+        Faculty* ourF = db.masterFaculty->printNode(facID);
+        ourF->facultyAdvisees->deletePos(ourF->facultyAdvisees->find(stuID));
+        Student* stuNode = db.masterStudent->printNode(stuID);
+        Faculty* fRoot = db.masterFaculty->root->value;
+        stuNode->advisorID = fRoot->facultyID;
+
+        fRoot->facultyAdvisees->insertBack(stuNode->studentID);
+
+
+
 
     }
 
@@ -159,6 +220,6 @@ while(keepRunning)
 
 }
 
-
+delete db;
 
 }
