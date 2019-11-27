@@ -34,11 +34,11 @@ void Faculty::DisplayFaculty(Faculty* f)
     for(int i = 0; i < facultyAdvisees->getSize(); ++i)
     {
 
-        cout << curr->data << endl;
+        cout << curr->data << " ";
         curr = curr->next;
     }
 
-
+cout << endl;
 }
 
 

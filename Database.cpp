@@ -82,6 +82,10 @@ Student* Database::DeleteStudent(int studentID)
 {
     bool didItDelete = false;
     Student* deletedStudent = masterStudent->printNode(studentID);
+    int advisorid = deletedStudent->advisorID;
+    
+    Faculty* advisor = masterFaculty->printNode(advisorid);
+    advisor->facultyAdvisees->remove(studentID);
     didItDelete = masterStudent->deleteNode(studentID);
     if(didItDelete)
     {

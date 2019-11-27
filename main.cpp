@@ -119,6 +119,9 @@ while(keepRunning)
         cout << "Enter the ID of the student you wish to delete: " << endl;
         cin >> stuID;
         db.DeleteStudent(stuID);
+
+
+
 //HAVE TO DELETE STUDENT FROM ADVISEES LIST
 
     }
