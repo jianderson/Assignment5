@@ -225,20 +225,19 @@ void FileIO::FromFacultyTreeNode(BST<Faculty*>* bst, TreeNode<Faculty*>* node, i
 
 do
 {
-    int id = 0;
+    int thisid = 0;
     getline(fileInput, response);
     if(response == endNode)
         return;
     try
     {
-        id = stoi(response);
+        thisid = stoi(response);
     }
     catch(invalid_argument e)
     {
         break;
     }
-
-    newFaculty->facultyAdvisees->insertBack(id);
+    newFaculty->facultyAdvisees->insertBack(thisid);
 } while(response != "");
 
 bst->insert(id, newFaculty);

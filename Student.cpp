@@ -81,7 +81,7 @@ ostream& operator<<(ostream& fileStreamer, Student& stu)
     fileStreamer << stu.studentGPA << endl;
     fileStreamer << stu.advisorID << endl;
 
-
+    return fileStreamer;
 
 }
 

@@ -83,6 +83,7 @@ ostream& operator<<(ostream& fileStreamer, Faculty& fac)
     fileStreamer << fac.facultyDepartment << endl;
     fileStreamer << *(fac.facultyAdvisees) << endl;
 
+    return fileStreamer;
 
 }
 

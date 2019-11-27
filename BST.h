@@ -316,7 +316,6 @@ cout << "this2" << endl;
                     if(current == NULL)
                         return NULL;
                 }
-
                 //if we reach this point current = the key you want
 
                 return current-> value;
