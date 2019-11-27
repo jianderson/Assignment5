@@ -211,9 +211,9 @@ void FileIO::FromFacultyTreeNode(BST<Faculty*>* bst, TreeNode<Faculty*>* node, i
         return;
 
     department = response;
-    getline(fileInput, response);
-    if(response == endNode)
-        return;
+    // getline(fileInput, response);
+    // if(response == endNode)
+    //     return;
 
 
 
@@ -229,6 +229,8 @@ do
     getline(fileInput, response);
     if(response == endNode)
         return;
+//THIS IS THE PART THAT I THINK IS CAUSING THE ERROR
+
     try
     {
         thisid = stoi(response);

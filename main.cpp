@@ -220,6 +220,6 @@ while(keepRunning)
 
 }
 
-//delete db;
+db.~Database();
 
 }

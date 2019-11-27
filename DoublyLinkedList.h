@@ -187,6 +187,44 @@ public:
         return curr->data;
     }
 
+    DoublyListNode<T>* remove(T d)
+    {
+        DoublyListNode<T>* curr = front;
+
+        while(curr->data != d)
+        {
+            curr = curr->next;
+
+            if(curr = NULL)
+            {
+                return NULL;
+            }
+        }
+
+        if(curr == front)
+        {
+            front = curr->next;
+        }
+
+        else if(curr == back)
+        {
+            curr->prev->next = curr->next;
+            back = curr->next;
+        }
+        else
+        {
+            curr->prev->next = curr->next;
+            curr->next->prev = curr->prev;
+        }
+
+        curr->next = NULL;
+        curr->prev = NULL;
+
+        size--;
+
+        return curr;
+    }
+
 
 
 };

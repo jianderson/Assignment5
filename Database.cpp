@@ -42,11 +42,17 @@ Student* Database::GetStudentInfo()
     cout << "What is the Student's ID Number: " << endl;
     cin >> iD;
     cout << "What is the Student's name: " << endl;
-    cin >> name;
+        cin.ignore();
+        getline(cin, name);
+
+    //cin >> name;
     cout << "What is the Student's grade level: " << endl;
     cin >> grade;
     cout << "What is the Student's major: " << endl;
-    cin >> major;
+
+    cin.ignore();
+    getline(cin, major);
+    //cin >> major;
     cout << "What is the Student's GPA: " << endl;
     cin >> gpa;
     cout << "What is the Student's Advisor's ID Number: " << endl;
@@ -142,9 +148,9 @@ void Database::ChangeStudentFacultyID(int stuID, int facID)
     int oldAdvisor = oldStudent -> advisorID;
     Faculty* oldf = masterFaculty->printNode(oldAdvisor);
 
-    int position = oldf->facultyAdvisees->find(stuID);
-    cout << position << " is the posision" << endl;
-    oldf->facultyAdvisees->deletePos(position);
+    int deletedId = oldf->facultyAdvisees->remove(stuID)->data;
+    cout << "Deleted ID: " << deletedId << endl;
+    //oldf->facultyAdvisees->deletePos(position);
 
 
 
@@ -165,11 +171,18 @@ Faculty* Database::GetFacultyInfo()
     cout << "What is the Faculty's ID Number: " << endl;
     cin >> iD;
     cout << "What is the Faculty's name: " << endl;
-    cin >> name;
+
+    cin.ignore();
+    getline(cin, name);
+    //cin >> name;
     cout << "What is the Faculty's status: " << endl;
-    cin >> status;
+    cin.ignore();
+    getline(cin, status);
+    //cin >> status;
     cout << "What is the Faculty's department: " << endl;
-    cin >> department;
+    cin.ignore();
+    getline(cin, department);
+    //cin >> department;
 
 
 
