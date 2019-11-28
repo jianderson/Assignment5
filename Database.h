@@ -13,6 +13,7 @@ public:
     Database();
     ~Database();
 //methods
+int backUpConstant;
     void PrintAllStudents();
     void AddNewStudent(Student* s);
     Student* GetStudentInfo();
@@ -26,5 +27,9 @@ public:
     void PrintAllFaculty();
     Faculty* FindFacultyByID(int facultyID);
     void ChangeStudentFacultyID(int stuID, int facID);
+    void BackUpStudent();
+    void BackUpFaculty();
+    void BackInFaculty();
+    void BackInStudent();
 
 };

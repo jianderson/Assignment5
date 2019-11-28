@@ -110,6 +110,11 @@ while(keepRunning)
         //myStu->advisorID = db.masterFaculty->root->value->facultyID;
         db.AddNewStudent(myStu);
 
+        db.BackUpStudent();
+        db.BackUpFaculty();
+
+        db.backUpConstant++;
+
 
 
     }
@@ -123,6 +128,10 @@ while(keepRunning)
         cout << "hello its me" << endl;
         db.DeleteStudent(stuID);
 
+        db.BackUpStudent();
+        db.BackUpFaculty();
+
+        db.backUpConstant++;
 
 
 //HAVE TO DELETE STUDENT FROM ADVISEES LIST
@@ -133,10 +142,14 @@ while(keepRunning)
     {
         Faculty* fac = db.GetFacultyInfo();
 
-        
+
 
         db.AddNewFaculty(fac);
 
+        db.BackUpStudent();
+        db.BackUpFaculty();
+
+        db.backUpConstant++;
 
     }
 
@@ -174,6 +187,12 @@ while(keepRunning)
         if(ourF!=fRoot)
             db.DeleteFaculty(facID);
 
+        db.BackUpStudent();
+        db.BackUpFaculty();
+
+        db.backUpConstant++;
+
+
 //HAVE TO ASSIGN ADVISEES TO SOMEONE ELSE
     }
 
@@ -198,6 +217,11 @@ while(keepRunning)
             cin >> facID;
         }
         db.ChangeStudentFacultyID(stuID, facID);
+
+        db.BackUpStudent();
+        db.BackUpFaculty();
+
+        db.backUpConstant++;
 
     }
 
@@ -232,13 +256,18 @@ while(keepRunning)
 
         fRoot->facultyAdvisees->insertBack(stuNode->studentID);
 
+        db.BackUpStudent();
+        db.BackUpFaculty();
 
+        db.backUpConstant++;
 
 
     }
 
     else if(userChoice == 13)
     {
+        db.BackInFaculty();
+        db.BackInStudent();
 
     }
 

@@ -9,6 +9,7 @@ Database::Database()
 {
 masterStudent = FileIO::ReadStudentTree();
 masterFaculty = FileIO::ReadFacultyTree();
+backUpConstant = 0;
 }
 //destructor that calls the write to file methods
 Database::~Database()
@@ -206,14 +207,41 @@ Faculty* Database::GetFacultyInfo()
     // cin >> department;
 
 
-    // if(allcorrect)
-    // {
+    if(allcorrect)
+    {
     Faculty* fac = new Faculty(iD, name, status, department);
 
     return fac;
-    // }
-    // else
-    // {
-    //     return NULL;
-    // }
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
+void Database::BackUpStudent()
+{
+    backUpConstant = backUpConstant%5;
+    FileIO::BackupStudentTree(masterStudent, backUpConstant);
+
+}
+
+void Database::BackUpFaculty()
+{
+    backUpConstant = backUpConstant%5;
+    FileIO::BackupFacultyTree(masterFaculty, backUpConstant);
+
+}
+
+void Database::BackInStudent()
+{
+    backUpConstant = (backUpConstant%5)-1;
+    masterStudent = FileIO::readStuBackup(backUpConstant);
+}
+
+void Database::BackInFaculty()
+{
+    backUpConstant = (backUpConstant%5)-1;
+    masterFaculty = FileIO::readFacBackup(backUpConstant);
+
 }

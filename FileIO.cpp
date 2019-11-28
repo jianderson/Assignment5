@@ -254,21 +254,21 @@ FromFacultyTreeNode(bst, node->right, fileInput);
 
 void FileIO::BackupStudentTree(BST<Student*>* studentTree, int backupFolderNum)
 {
-    string studentBackupStr = "StuBackUpNum" + backupFolderNum;
+    string studentBackupStr = "StuBackUpNum" + to_string(backupFolderNum);
 
     WriteStudentTree(studentTree, studentBackupStr);
 }
 
 void FileIO::BackupFacultyTree(BST<Faculty*>* facultyTree, int backupFolderNum)
 {
-    string facultyBackupStr = "FacBackUpNum" + backupFolderNum;
+    string facultyBackupStr = "FacBackUpNum" + to_string(backupFolderNum);
 
     WriteFacultyTree(facultyTree, facultyBackupStr);
 }
 
 BST<Student*>* FileIO::readStuBackup(int backupNum)
 {
-    string studentBackUp = "StuBackUpNum" + backupNum;
+    string studentBackUp = "StuBackUpNum" + to_string(backupNum);
 
     BST<Student*>* studentTreeBack = new BST<Student*>;
 
@@ -279,7 +279,7 @@ BST<Student*>* FileIO::readStuBackup(int backupNum)
 
 BST<Faculty*>* FileIO::readFacBackup(int backupNum)
 {
-    string facultyBackUp = "FacBackUpNum" + backupNum;
+    string facultyBackUp = "FacBackUpNum" + to_string(backupNum);
 
     BST<Faculty*>* facultyTreeBack = new BST<Faculty*>;
 
