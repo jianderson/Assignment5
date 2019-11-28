@@ -197,11 +197,11 @@ Faculty* Database::GetFacultyInfo()
     getline(cin, name);
     //cin >> name;
     cout << "What is the Faculty's status: " << endl;
-    cin.ignore();
+    //cin.ignore();
     getline(cin, status);
     //cin >> status;
     cout << "What is the Faculty's department: " << endl;
-    cin.ignore();
+    //cin.ignore();
     getline(cin, department);
     //cin >> department;
 
