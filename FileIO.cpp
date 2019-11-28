@@ -4,17 +4,17 @@ using namespace std;
 
 const string FileIO::facultyFileStr = "FacultyTable.txt";
 const string FileIO::studentFileStr = "StudentTable.txt";
-
+//write to the file
 void FileIO::WriteStudentTree(BST<Student*>* mS, string sFileName)
 {
     mS->ToFile(sFileName);
 }
-
+//write to the file
 void FileIO::WriteFacultyTree(BST<Faculty*>* mF, string fFileName)
 {
     mF->ToFile(fFileName);
 }
-
+//read from the file and assign it to a tree
 BST<Student*>* FileIO::ReadStudentTree(string sFileName)
 {
     ifstream fileStreamer;
@@ -32,7 +32,7 @@ BST<Student*>* FileIO::ReadStudentTree(string sFileName)
     return studentTree;
 
 }
-
+//read from file and assign it to a tree
 BST<Faculty*>* FileIO::ReadFacultyTree(string fFileName)
 {
     ifstream fileStreamer;
@@ -51,7 +51,7 @@ BST<Faculty*>* FileIO::ReadFacultyTree(string fFileName)
 
 }
 
-
+//will help get information from the file
 BST<Student*>* FileIO::FromStudentTree(ifstream& fileInput)
 {
     BST<Student*>* newTree = new BST<Student*>();
@@ -64,7 +64,7 @@ BST<Student*>* FileIO::FromStudentTree(ifstream& fileInput)
 
     return newTree;
 }
-
+//will help get info from the file for the tree
 void FileIO::FromStudentTreeNode(BST<Student*>* bst, TreeNode<Student*>* node, ifstream& fileInput)
 {
     const string endNode = "||";
@@ -89,7 +89,7 @@ void FileIO::FromStudentTreeNode(BST<Student*>* bst, TreeNode<Student*>* node, i
             return;
         }
     }
-
+//getting the responses
     if(response == endNode)
         return;
 
@@ -124,13 +124,13 @@ void FileIO::FromStudentTreeNode(BST<Student*>* bst, TreeNode<Student*>* node, i
         return;
 
     advisorid = stoi(response);
-
+//creating object
     Student* stu = new Student(id, name, grade, major, gpa, advisorid);
 
     node = new TreeNode<Student*>(id, stu);
 
     bst->insert(id, stu);
-
+//do this for left and right
     FromStudentTreeNode(bst, node->left, fileInput);
     FromStudentTreeNode(bst, node->right, fileInput);
 
@@ -139,7 +139,7 @@ void FileIO::FromStudentTreeNode(BST<Student*>* bst, TreeNode<Student*>* node, i
 
 
 
-
+//get info from file and put in tree
 BST<Faculty*>* FileIO::FromFacultyTree(ifstream& fileInput)
 {
     BST<Faculty*>* newTree = new BST<Faculty*>();
@@ -155,7 +155,7 @@ BST<Faculty*>* FileIO::FromFacultyTree(ifstream& fileInput)
 
 
 
-
+//get info and form ndoes for tree from file
 
 void FileIO::FromFacultyTreeNode(BST<Faculty*>* bst, TreeNode<Faculty*>* node, ifstream& fileInput)
 {
@@ -175,7 +175,7 @@ void FileIO::FromFacultyTreeNode(BST<Faculty*>* bst, TreeNode<Faculty*>* node, i
     string department;
 
     string response = "null";
-
+//get lines and assign them
     getline(fileInput, response);
     while(response == "")
     {
@@ -216,13 +216,13 @@ void FileIO::FromFacultyTreeNode(BST<Faculty*>* bst, TreeNode<Faculty*>* node, i
     //     return;
 
 
-
+//make node
     Faculty* newFaculty = new Faculty(id, name, status, department);
 
     node = new TreeNode<Faculty*>(id, newFaculty);
 
 
-
+//for the linked list
 do
 {
     int thisid = 0;
@@ -241,7 +241,7 @@ do
     }
     newFaculty->facultyAdvisees->insertBack(thisid);
 } while(response != "");
-
+//insert it
 bst->insert(id, newFaculty);
 
 FromFacultyTreeNode(bst, node->left, fileInput);
@@ -251,21 +251,23 @@ FromFacultyTreeNode(bst, node->right, fileInput);
 
 
 
-
+//backup the tree into a file
 void FileIO::BackupStudentTree(BST<Student*>* studentTree, int backupFolderNum)
 {
     string studentBackupStr = "StuBackUpNum" + to_string(backupFolderNum);
 
+
+
     WriteStudentTree(studentTree, studentBackupStr);
 }
-
+//backup tree into a file
 void FileIO::BackupFacultyTree(BST<Faculty*>* facultyTree, int backupFolderNum)
 {
     string facultyBackupStr = "FacBackUpNum" + to_string(backupFolderNum);
 
     WriteFacultyTree(facultyTree, facultyBackupStr);
 }
-
+//read from the file into the tree
 BST<Student*>* FileIO::readStuBackup(int backupNum)
 {
     string studentBackUp = "StuBackUpNum" + to_string(backupNum);
@@ -276,7 +278,7 @@ BST<Student*>* FileIO::readStuBackup(int backupNum)
 
     return studentTreeBack;
 }
-
+//read from the file into a tree
 BST<Faculty*>* FileIO::readFacBackup(int backupNum)
 {
     string facultyBackUp = "FacBackUpNum" + to_string(backupNum);

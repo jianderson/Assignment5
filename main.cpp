@@ -125,9 +125,15 @@ while(keepRunning)
 
         cout << "Enter the ID of the student you wish to delete: " << endl;
         cin >> stuID;
-        cout << "hello its me" << endl;
-        db.DeleteStudent(stuID);
+        //cout << "hello its me" << endl;
 
+        while(!db.masterStudent -> search(stuID))
+        {
+          cout << "Student ID number not found. Try again." << endl;
+          cin >> stuID;
+        }
+        db.DeleteStudent(stuID);
+        cout << "hello its me" << endl;
         db.BackUpStudent();
         db.BackUpFaculty();
 

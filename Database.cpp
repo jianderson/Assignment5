@@ -94,7 +94,7 @@ Student* Database::DeleteStudent(int studentID)
     if(didItDelete)
     {
         cout << "Deleted Successfully" << endl;
-        return deletedStudent;
+        //return deletedStudent;
     }
     else
     {
