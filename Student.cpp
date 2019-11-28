@@ -2,7 +2,7 @@
 #include "Student.h"
 
 using namespace std;
-
+//student constructor
 Student::Student()
 {
     studentID = 0;
@@ -12,7 +12,7 @@ Student::Student()
     studentGPA = 0.0;
     advisorID = 0;
 }
-
+//overloaded student constructor
 Student::Student(int id, string name, string grade, string major, double gpa, int advisor)
 {
     studentID = id;
@@ -22,7 +22,7 @@ Student::Student(int id, string name, string grade, string major, double gpa, in
     studentGPA = gpa;
     advisorID = advisor;
 }
-
+//overloaded equals operator
 bool Student::operator=(Student stu)
 {
     if(stu.studentID == this -> studentID)
@@ -30,7 +30,7 @@ bool Student::operator=(Student stu)
     else
         return false;
 }
-
+//overloaded < operator
 bool Student::operator<(Student stu)
 {
     if(stu.studentID > this -> studentID)
@@ -38,7 +38,7 @@ bool Student::operator<(Student stu)
     else
         return false;
 }
-
+//overloaded > operator
 bool Student::operator>(Student stu)
 {
     if(stu.studentID < this -> studentID)
@@ -46,7 +46,7 @@ bool Student::operator>(Student stu)
     else
         return false;
 }
-
+//overloaded != operator
 bool Student::operator!=(Student stu)
 {
     if(stu.studentID!= this -> studentID)
@@ -56,7 +56,7 @@ bool Student::operator!=(Student stu)
 }
 
 
-
+//method to display the facts of the student
 void Student::DisplayStudent(Student* s)
 {
 
@@ -71,7 +71,7 @@ void Student::DisplayStudent(Student* s)
 }
 
 
-
+//method to overload << operator
 ostream& operator<<(ostream& fileStreamer, Student& stu)
 {
     fileStreamer << stu.studentID << endl;
@@ -84,7 +84,7 @@ ostream& operator<<(ostream& fileStreamer, Student& stu)
     return fileStreamer;
 
 }
-
+//tostring method
 void Student::toString()
 {
     cout << "Student ID: " << studentID << endl;

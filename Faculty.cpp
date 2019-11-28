@@ -2,7 +2,7 @@
 #include "Faculty.h"
 
 using namespace std;
-
+//constructor to make a faculty
 Faculty::Faculty()
 {
     facultyID = 0;
@@ -12,7 +12,7 @@ Faculty::Faculty()
     facultyAdvisees = new DoublyLinkedList<int>();
 
 }
-
+//overloaded constructor to make a faculty
 Faculty::Faculty(int id, string name, string status, string department)
 {
     facultyID = id;
@@ -22,7 +22,7 @@ Faculty::Faculty(int id, string name, string status, string department)
     facultyAdvisees = new DoublyLinkedList<int>();
 
 }
-
+//method to display the faculty
 void Faculty::DisplayFaculty(Faculty* f)
 {
     cout << "Faculty ID: " << f->facultyID << endl;
@@ -41,7 +41,7 @@ void Faculty::DisplayFaculty(Faculty* f)
 cout << endl;
 }
 
-
+//overloaded = operator
 
 bool Faculty::operator=(Faculty fac)
 {
@@ -50,7 +50,7 @@ bool Faculty::operator=(Faculty fac)
     else
         return false;
 }
-
+//overloaded < operator
 bool Faculty::operator<(Faculty fac)
 {
     if(fac.facultyID > this -> facultyID)
@@ -58,7 +58,7 @@ bool Faculty::operator<(Faculty fac)
     else
         return false;
 }
-
+//overloaded > operator
 bool Faculty::operator>(Faculty fac)
 {
     if(fac.facultyID < this -> facultyID)
@@ -66,7 +66,7 @@ bool Faculty::operator>(Faculty fac)
     else
         return false;
 }
-
+//overloaded != operator
 bool Faculty::operator!=(Faculty fac)
 {
     if(fac.facultyID!= this -> facultyID)
@@ -74,7 +74,7 @@ bool Faculty::operator!=(Faculty fac)
     else
         return false;
 }
-
+//overloaded << operator
 ostream& operator<<(ostream& fileStreamer, Faculty& fac)
 {
     fileStreamer << fac.facultyID << endl;
@@ -87,7 +87,7 @@ ostream& operator<<(ostream& fileStreamer, Faculty& fac)
 
 }
 
-
+//to string method to print our faculty
 void Faculty::toString()
 {
     cout << "Faculty ID: " << facultyID << endl;

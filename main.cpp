@@ -71,7 +71,8 @@ while(keepRunning)
         int stuID;
         cout << "Enter the student ID number: " << endl;
         cin >> stuID;
-        db.GetStudentAdvisorInfo(stuID);
+        Faculty* advisor = db.GetStudentAdvisorInfo(stuID);
+        advisor->toString();
 
     }
 
@@ -118,6 +119,7 @@ while(keepRunning)
 
         cout << "Enter the ID of the student you wish to delete: " << endl;
         cin >> stuID;
+        cout << "hello its me" << endl;
         db.DeleteStudent(stuID);
 
 
@@ -129,6 +131,9 @@ while(keepRunning)
     else if(userChoice == 9)
     {
         Faculty* fac = db.GetFacultyInfo();
+
+        cout << fac->facultyStatus << endl;
+
         db.AddNewFaculty(fac);
 
 
@@ -140,7 +145,28 @@ while(keepRunning)
 
         cout << "Enter the ID of the faculty you wish to delete: " << endl;
         cin >> facID;
-        db.DeleteFaculty(facID);
+
+        Faculty* ourF = db.masterFaculty->printNode(facID);
+        int stuID = 0;
+        DoublyListNode<int>* curr = ourF->facultyAdvisees->front;
+        Faculty* fRoot = db.masterFaculty->root->value;
+        if(ourF==fRoot)
+        {
+            db.DeleteFaculty(facID);
+        }
+        for(int i = 0; i < ourF->facultyAdvisees->getSize(); ++i)
+        {
+
+            stuID = curr->data;
+            Student* stuNode = db.masterStudent->printNode(stuID);
+            stuNode->advisorID = fRoot->facultyID;
+            fRoot->facultyAdvisees->insertBack(stuNode->studentID);
+
+            curr = curr->next;
+        }
+        if(ourF!=fRoot)
+            db.DeleteFaculty(facID);
+
 //HAVE TO ASSIGN ADVISEES TO SOMEONE ELSE
     }
 
@@ -176,7 +202,7 @@ while(keepRunning)
         int facID;
         cout << "Enter the Student ID: " << endl;
         cin >> stuID;
-        cout << "Enter the new Advisor ID: " << endl;
+        cout << "Enter the Advisor ID: " << endl;
         cin >> facID;
         while(!db.masterStudent -> search(stuID))
         {

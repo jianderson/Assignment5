@@ -8,21 +8,22 @@ template <class T>
 class BST
 {
     public:
+        //declare the root and then the endNode constant
         TreeNode<T> *root;
 
         const string endNode = "||";
 
-
+//constructor
         BST()
         {
             root = NULL;
         }
-
+//destructor
         ~BST()
         {
 
         }
-
+//search the tree for an int value
         bool search(int value)
         {
 
@@ -33,7 +34,7 @@ class BST
 
             else
             {
-
+//while the key does not equal current move right or left
                 TreeNode<T> *current = root;
 
                 while(current->key != value)
@@ -42,13 +43,13 @@ class BST
                         current = current->left;
                     else
                         current = current->right;
-
+//if you get to the end then obviously its not in there
                     if(current == NULL)
                         return false;
                 }
 
             }
-
+//if you make it here we found the value
             return true;
 
         }
@@ -61,7 +62,7 @@ class BST
 
             TreeNode<T> *node = new TreeNode<T>(key, value); // I AM CONFUSION I DONT UNDERSTAND UGH
 
-            cout<< "This part is ok" << endl;
+
             if(root == NULL)
                 root = node;
             else
@@ -70,19 +71,19 @@ class BST
 
                 TreeNode<T> *current = root;
                 TreeNode<T> *parent = NULL;
-                cout << "make it here" << endl;
+
                 bool istrue = true;
                 while(istrue)
                 {
-                    cout << "make it here" << endl;
+
                     parent = current;
-                    cout << "this" << endl;
+
                     if(key < current->key)
                     {
                         //go left
 
                         current = current->left;
-cout << "this2" << endl;
+
                         if(current == NULL)
                         {
                             parent->left = node;
@@ -107,7 +108,7 @@ cout << "this2" << endl;
             }
 
 
-
+//check if the root is empty to see if the tree is empty
         bool isEmpty()
         {
             if(root == NULL)
@@ -120,13 +121,13 @@ cout << "this2" << endl;
             }
         }
 
-
+//delete a node
         bool deleteNode(int key)
         {
 
             if(root == NULL)
                 return false;
-
+//you need a parent and a current to delete
             TreeNode<T> *parent = root;
             TreeNode<T> *current = root;
             bool isLeft = true;
@@ -153,8 +154,7 @@ cout << "this2" << endl;
             }
 
             //if we make it here then we must have found the node to be deleted
-//CHECK THIS WITH SANIYA
-
+//all the cases for what kind of node it is
             if(current->left == NULL && current->right == NULL)
             {
                 if(current == root)
@@ -168,7 +168,7 @@ cout << "this2" << endl;
                 }
                 else
                 {
-                    parent->right = NULL; // I DONT KNOW WHAT TO PUT HERE
+                    parent->right = NULL;
                 }
 
             }
@@ -230,7 +230,7 @@ cout << "this2" << endl;
             }
 
         }
-
+//get successor will help us to delete a node with two children
         TreeNode<T>* getSuccessor(TreeNode<T> *d)
         {
             TreeNode<T> *current = d->right;
@@ -256,7 +256,7 @@ cout << "this2" << endl;
             return successor;
 
         }
-
+//get the minimum value all the way on the left
         TreeNode<T>* getMin()
         {
             TreeNode<T> *current = root;
@@ -269,7 +269,7 @@ cout << "this2" << endl;
 
             return current;
         }
-
+//get max value which is all the way on the right
         TreeNode<T>* getMax()
         {
             TreeNode<T> *current = root;
@@ -282,12 +282,12 @@ cout << "this2" << endl;
 
             return current;
         }
-
+//print the entire tree
         void printTree()
         {
             recPrint(root);
         }
-
+//print subtree starting with a single node
         void recPrint(TreeNode<T> *node)
         {
             if(node == NULL)
@@ -297,7 +297,7 @@ cout << "this2" << endl;
             cout << endl;
             recPrint(node->right);
         }
-
+//access the node from the tree and return it so its values can be adjusted
         T printNode(int k)
         {
             if(root == NULL)
@@ -321,7 +321,7 @@ cout << "this2" << endl;
                 return current-> value;
             }
         }
-
+//helps push the tree to a file
         void ToFile(string fileName)
         {
             ofstream fileStreamer;
@@ -334,7 +334,7 @@ cout << "this2" << endl;
             NodeToFile(root, fileStreamer);
             fileStreamer.close();
         }
-
+//push the node to the file which will be called above
         void NodeToFile(TreeNode<T> *node, ofstream& fileStreamer)
         {
             if(node == NULL)
