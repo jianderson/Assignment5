@@ -1,5 +1,6 @@
 #include <iostream>
 #include "FileIO.h"
+#include <string>
 
 
 using namespace std;
@@ -48,10 +49,11 @@ Student* Database::GetStudentInfo()
 
     //cin >> name;
     cout << "What is the Student's grade level: " << endl;
-    cin >> grade;
+    getline(cin, grade);
+    //cin >> grade;
     cout << "What is the Student's major: " << endl;
 
-    cin.ignore();
+    //cin.ignore();
     getline(cin, major);
     //cin >> major;
     cout << "What is the Student's GPA: " << endl;
@@ -179,41 +181,39 @@ Faculty* Database::GetFacultyInfo()
     catch(runtime_error e)
     {
         cout << "That was not a number! Try again!" << endl;
-        try{
+        try
+        {
         cin >> iD;
         }
         catch(runtime_error e2)
         {
             allcorrect = false;
         }
-
-
-
     }
 
     cout << "What is the Faculty's name: " << endl;
 
     cin.ignore();
     getline(cin, name);
-    //cin >> name;
+    // cin >> name;
     cout << "What is the Faculty's status: " << endl;
-    //cin.ignore();
+    // cin.ignore();
     getline(cin, status);
-    //cin >> status;
+    // cin >> status;
     cout << "What is the Faculty's department: " << endl;
-    //cin.ignore();
+    // cin.ignore();
     getline(cin, department);
-    //cin >> department;
+    // cin >> department;
 
 
-    if(allcorrect)
-    {
+    // if(allcorrect)
+    // {
     Faculty* fac = new Faculty(iD, name, status, department);
 
     return fac;
-    }
-    else
-    {
-        return NULL;
-    }
+    // }
+    // else
+    // {
+    //     return NULL;
+    // }
 }

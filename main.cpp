@@ -96,6 +96,7 @@ while(keepRunning)
             int stuId = curr->data;
             Student* outS = db.masterStudent->printNode(stuId);
             outS->DisplayStudent(outS);
+            // outS -> toString();
             curr = curr->next;
 
         }
@@ -132,7 +133,7 @@ while(keepRunning)
     {
         Faculty* fac = db.GetFacultyInfo();
 
-        cout << fac->facultyStatus << endl;
+        
 
         db.AddNewFaculty(fac);
 
@@ -145,6 +146,12 @@ while(keepRunning)
 
         cout << "Enter the ID of the faculty you wish to delete: " << endl;
         cin >> facID;
+
+        while(!db.masterFaculty -> search(facID))
+        {
+          cout << "Faculty ID number not found. Try again." << endl;
+          cin >> facID;
+        }
 
         Faculty* ourF = db.masterFaculty->printNode(facID);
         int stuID = 0;

@@ -1,10 +1,19 @@
 ||
+1
+1
+sally
+a
+a
 3
-3
-jill
-sophomore
-compsco
-4
 2
+
+||
+2
+2
+sall
+djd
+sk
+6
+1
 
 ||
