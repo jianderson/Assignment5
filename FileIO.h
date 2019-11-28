@@ -27,4 +27,11 @@ public:
     //
     // static void BackupTrees(BST<Student*>* studentTree, BST<Faculty*>* facultyTree);
 
+    static BST<Faculty*>* readFacBackup(int backupNum);
+    static BST<Student*>* readStuBackup(int backupNum);
+    static void BackupFacultyTree(BST<Faculty*>* facultyTree, int backupFolderNum);
+    static void BackupStudentTree(BST<Student*>* studentTree, int backupFolderNum);
+
+
+
 };
